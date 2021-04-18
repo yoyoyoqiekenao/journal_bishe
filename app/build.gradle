@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.jorunal_bishe"
-        minSdkVersion 26
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -36,4 +36,16 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //导航栏
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
+    //butterKnife
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    //xutils
+    compile 'org.xutils:xutils:3.5.0'
+    //EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+
 }
