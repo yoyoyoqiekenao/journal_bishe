@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TabIndicator的参数设置-->
+    <declare-styleable name="PagerSlidingTab">
+        <attr name="indicatorColor" format="color" />
+        <attr name="underlineColor" format="color" />
+        <attr name="dividerColor" format="color" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="underlineHeight" format="dimension" />
+        <attr name="pst_dividerPadding" format="dimension" />
+        <attr name="tabPaddingLeftRight" format="dimension" />
+        <attr name="scrollOffset" format="dimension" />
+        <attr name="tabBackgrounds" format="reference" />
+        <attr name="sameLine" format="boolean" />
+        <attr name="pst_textAllCaps" format="boolean" />
+    </declare-styleable>
+
+    <!-- TimeLineMarkerView的参数设置 -->
+    <declare-styleable name="TimeLineMarker">
+        <!--圆点大小-->
+        <attr name="markerSize" format="dimension" />
+        <!--圆点颜色或者图片-->
+        <attr name="marker" format="color|reference" />
+        <!--上面线段颜色或者图片-->
+        <attr name="beginLine" format="color|reference" />
+        <!--下面线段颜色或者图片-->
+        <attr name="endLine" format="color|reference" />
+        <!--线段粗细-->
+        <attr name="lineSize" format="dimension" />
+    </declare-styleable>
+
+    <!-- SettingItemView 设置项style -->
+    <declare-styleable name="settingItem">
+        <attr name="settingName" format="string"/>
+        <attr name="settingType">
+            <enum name="arrow" value="0"/>
+            <enum name="toggle" value="1"/>
+            <enum name="text" value="2"/>
+        </attr>
+        <attr name="settingToggleCheck">
+            <enum name="close" value="0"/>
+            <enum name="open" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

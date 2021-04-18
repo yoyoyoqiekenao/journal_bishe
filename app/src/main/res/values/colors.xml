@@ -7,4 +7,33 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#F9C848</color>
+    <color name="colorPrimaryDark">#FC8A03</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="red">#FF0000</color>
+
+    <color name="gray">@android:color/darker_gray</color>
+    <color name="gray_bg">#44B6B6B6</color>
+    <color name="blue">#0099FF</color>
+    <color name="blue_sky">#87CEEB</color><!--天蓝色-->
+
+
+    <color name="centerColor">#FEF247</color>
+    <color name="main_text_color">#0e0e0e</color>
+    <color name="matter_text_color">#FAF8F8</color>
+    <color name="general_text_color">#ED4747</color>
+    <color name="assist_text_color">#918d8d</color>
+
+    <color name="line_1">#F5F5F5</color><!--近乎白色浅灰-->
+    <color name="line_2">#DCDCDC</color><!--浅灰2-->
+    <color name="line_3">#D3D3D3</color><!--浅灰3-->
+    <color name="line_4">#C0C0C0</color><!--银灰4-->
+    <color name="line_5">#A9A9A9</color><!--深灰4-->
+
+    <!--主页tab背景-->
+    <color name="colorTabBg">#ffffffff</color>
+    <color name="colorTabTextCheck">#ffce3d3a</color>
+    <color name="colorTabTextNormal">#585858</color>
+    <color name="colorTabLine">#ffce3d3a</color>
 </resources>

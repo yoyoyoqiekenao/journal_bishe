@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.jorunal_bishe.R;
+import com.example.jorunal_bishe.util.JLogUtils;
 
 public class ShareFragment extends Fragment {
     @Nullable
@@ -17,5 +18,11 @@ public class ShareFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_share, container, false);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        JLogUtils.getInstance().d("OnResume");
     }
 }

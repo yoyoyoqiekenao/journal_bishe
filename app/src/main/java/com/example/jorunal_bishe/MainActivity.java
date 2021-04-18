@@ -1,6 +1,5 @@
 package com.example.jorunal_bishe;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -8,6 +7,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +16,12 @@ import android.widget.TextView;
 
 import com.example.jorunal_bishe.adapter.ExamplePagerAdapter;
 import com.example.jorunal_bishe.base.ActivityPermissions;
+import com.example.jorunal_bishe.money.MoneyFragment;
 import com.example.jorunal_bishe.permission.PermissionListener;
 import com.example.jorunal_bishe.share.ShareFragment;
 import com.example.jorunal_bishe.util.JLogUtils;
 import com.example.jorunal_bishe.util.ToastUtil;
+import com.gyf.immersionbar.ImmersionBar;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -57,19 +59,23 @@ public class MainActivity extends ActivityPermissions {
     @Override
     protected void initParams(Bundle savedInstanceState) {
         ButterKnife.bind(this);
+        ImmersionBar.with(this).init();
         requestRuntimePermission();
-
         initMagicIndicator();
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+            firstStart();
+        }
     }
 
     private void initMagicIndicator() {
         mList.add(new ShareFragment());
-        mList.add(new ShareFragment());
+        mList.add(new MoneyFragment());
         mList.add(new ShareFragment());
         mList.add(new ShareFragment());
 
-        mExamplePagerAdapter = new ExamplePagerAdapter(getSupportFragmentManager(),mList);
+        mExamplePagerAdapter = new ExamplePagerAdapter(getSupportFragmentManager(), mList);
         mViewPager.setAdapter(mExamplePagerAdapter);
+        mViewPager.setOffscreenPageLimit(4);
         mMagicIndicator.setBackgroundColor(Color.BLACK);
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdjustMode(true);

@@ -1,3 +1,92 @@
 <resources>
-    <string name="app_name">jorunal_bishe</string>
+    <string name="app_name">日记帐助手</string>
+    <string name="application_id">fedf66f3c904d9bf271ddea6eba55136</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="title_setting">设置</string>
+    <string name="title_login">用户登录</string>
+    <string name="title_register">用户注册</string>
+    <string name="text_login">点击登录</string>
+    <string name="this_month_income">本月收入</string>
+    <string name="this_month_pay_out">本月支出</string>
+    <string name="budget_surplus">预算结余</string>
+    <string name="total_budget">总预算</string>
+    <string name="balance">余额</string>
+    <string name="consume">消费</string>
+    <string name="used_budget">已用</string>
+    <string name="usable_budget">可用</string>
+    <string name="remember">记一笔</string>
+    <string name="today">今天</string>
+    <string name="before_today">今天以前</string>
+    <string name="classify">分类</string>
+    <string name="date">日期</string>
+    <string name="remark">备注...</string>
+    <string name="journal_description">今天还没有记过帐哦~~</string>
+    <string name="recently">最近一笔</string>
+    <string name="this_week">本周</string>
+    <string name="this_month">本月</string>
+    <string name="this_year">本年</string>
+    <string name="this_all_bill">全部</string>
+    <string name="surplus">结余</string>
+    <string name="income">收入</string>
+    <string name="pay_out">支出</string>
+    <string name="income_money">收入金额</string>
+    <string name="pay_out_money">支出金额</string>
+    <string name="camera">拍照</string>
+    <string name="photo_gallery">图片库</string>
+    <string name="save">保存</string>
+    <string name="hint">数据不能为空</string>
+
+    <string name="rmb">￥</string>
+    <string name="text_edit">编辑</string>
+    <string name="text_modify_classify">修改分类</string>
+    <string name="classify_name">分类名称</string>
+    <string name="default_classify_icon">默认分类图标</string>
+    <string name="input_name">输入名称</string>
+    <string name="add_first_classify">添加一级分类</string>
+    <string name="add_first_payout_classify">添加一级支出分类</string>
+    <string name="add_first_income_classify">添加一级收入分类</string>
+    <string name="new_second_classify">新建二级分类</string>
+    <string name="new_first_payout_classify">新建一级支出分类</string>
+    <string name="new_first_income_classify">新建一级收入分类</string>
+    <string name="new_second_payout_classify">新建二级支出分类</string>
+    <string name="new_second_income_classify">新建二级收入分类</string>
+    <string name="next">下一步</string>
+    <string name="finish">完成</string>
+    <string name="text_update">版本更新</string>
+    <string name="text_toggle">设置开关</string>
+    <string name="text_about">关于</string>
+    <string name="text_current_version">当前版本：v%1$s</string>
+    <string name="text_company">日记帐&#160; 版权所有 由dzt提供技术支持</string>
+    <string name="text_copyright">Copyright &#169; 2016-2017 dzt All Rights Reserved.</string>
+
+    <string-array name="menus">
+        <item>@string/chat</item>
+        <item>@string/logout</item>
+    </string-array>
+
+    <string name="chat">图表</string>
+    <string name="setting">设置</string>
+    <string name="day">白天</string>
+    <string name="night">夜间</string>
+    <string name="logout">退出登录</string>
+
+    <string-array name="week">
+        <item>@string/sunday</item>
+        <item>@string/monday</item>
+        <item>@string/tuesday</item>
+        <item>@string/wednesday</item>
+        <item>@string/thursday</item>
+        <item>@string/friday</item>
+        <item>@string/saturday</item>
+    </string-array>
+    <string name="sunday">日</string>
+    <string name="monday">一</string>
+    <string name="tuesday">二</string>
+    <string name="wednesday">三</string>
+    <string name="thursday">四</string>
+    <string name="friday">五</string>
+    <string name="saturday">六</string>
+
+
 </resources>
