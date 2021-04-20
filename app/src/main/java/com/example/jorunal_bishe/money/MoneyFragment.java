@@ -27,6 +27,7 @@ import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.adapter.MoneyAdapter;
 import com.example.jorunal_bishe.base.FragmentBase;
 import com.example.jorunal_bishe.been.Journal;
+import com.example.jorunal_bishe.consume.TodayDetailActivity;
 import com.example.jorunal_bishe.eventbus.UpdateEvent;
 import com.example.jorunal_bishe.record.RecordActivity;
 import com.example.jorunal_bishe.util.JDateKit;
@@ -101,6 +102,7 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
         }
     }
 
+
     @Override
     public void showJournals(List<Journal> journals) {
         mAdapter.refreshDatas(journals);
@@ -139,7 +141,8 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
 
     @Override
     public void showTodayDetailsUi() {
-
+        Intent intent = new Intent(getContext(), TodayDetailActivity.class);
+        startActivity(intent);
     }
 
     @Override

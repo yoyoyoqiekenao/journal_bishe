@@ -45,6 +45,12 @@
         <activity
             android:name=".calendar.CalendarActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".consume.TodayDetailActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".edit.EditActivity"
+            android:screenOrientation="portrait"></activity>
 
         <service
             android:name=".JournalService"

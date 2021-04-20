@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_today_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".consume.TodayDetailActivity">
+
+    <com.example.jorunal_bishe.widgets.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleview"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_top_bg">
+
+            <TextView
+                android:id="@+id/tv_surplus_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="0.00"
+                android:textSize="@dimen/matter_text_size"/>
+
+            <TextView
+                android:id="@+id/tv_surplus_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_surplus_value"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/surplus"
+                android:textSize="@dimen/main_text_size"/>
+
+            <TextView
+                android:id="@+id/tv_income_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_surplus_text"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:text="0.00"
+                android:textSize="@dimen/main_text_size"/>
+
+            <TextView
+                android:id="@+id/tv_income_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_income_value"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="10dp"
+                android:text="@string/income"
+                android:textSize="@dimen/main_text_size"/>
+
+            <TextView
+                android:id="@+id/tv_payout_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_surplus_text"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="30dp"
+                android:text="0.00"
+                android:textSize="@dimen/main_text_size"/>
+
+            <TextView
+                android:id="@+id/tv_payout_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_payout_value"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="10dp"
+                android:text="@string/pay_out"
+                android:textSize="@dimen/main_text_size"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_remember"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/journal_description"
+                android:textSize="@dimen/assist_text_size"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="5dp"
+                android:drawableRight="@mipmap/right_arow_yellow_color_icon"
+                android:text="@string/remember"
+                android:textSize="@dimen/matter_text_size"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</RelativeLayout>
