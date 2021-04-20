@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_budget"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".budget.BudgetActivity">
+
+    <com.example.jorunal_bishe.widgets.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_top_bg"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/ll_money"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:addStatesFromChildren="true"
+            android:background="@drawable/selector_text_bg"
+            android:orientation="horizontal">
+
+            <com.example.jorunal_bishe.widgets.ClearEditText
+                android:id="@+id/cet_money"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@mipmap/icon_modify"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="@string/total_budget"
+                android:inputType="numberDecimal"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_total_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_money"
+            android:layout_marginTop="5dp"
+            android:text="@string/total_budget"
+            android:textColor="#A24A08"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_used_budget_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_total_budget"
+            android:layout_marginTop="20dp"
+            android:text="0.00"
+            android:textColor="#A24A08"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_used_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_used_budget_value"
+            android:layout_marginTop="5dp"
+            android:text="@string/used_budget"
+            android:textColor="#A24A08"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_usable_budget_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_total_budget"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="0.00"
+            android:textColor="#A24A08"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_usable_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_usable_budget_value"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/usable_budget"
+            android:textColor="#A24A08"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

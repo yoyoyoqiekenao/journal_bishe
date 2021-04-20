@@ -54,6 +54,9 @@
         <activity
             android:name=".consume.ConsumeDetailActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".budget.BudgetActivity"
+            android:screenOrientation="portrait"></activity>
 
         <service
             android:name=".JournalService"

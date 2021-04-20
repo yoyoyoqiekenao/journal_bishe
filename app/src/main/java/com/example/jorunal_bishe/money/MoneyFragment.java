@@ -23,10 +23,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jorunal_bishe.JournalType;
 import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.adapter.MoneyAdapter;
 import com.example.jorunal_bishe.base.FragmentBase;
 import com.example.jorunal_bishe.been.Journal;
+import com.example.jorunal_bishe.budget.BudgetActivity;
 import com.example.jorunal_bishe.consume.ConsumeDetailActivity;
 import com.example.jorunal_bishe.consume.TodayDetailActivity;
 import com.example.jorunal_bishe.eventbus.UpdateEvent;
@@ -83,6 +85,9 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
         presenter.loadJournals();
         setCurDate();
         btnRemember.setOnClickListener(this);
+        tvIncome.setOnClickListener(this);
+        tvPayOut.setOnClickListener(this);
+        tvSurplus.setOnClickListener(this);
     }
 
     private void setCurDate() {
@@ -131,7 +136,8 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
 
     @Override
     public void showSurplusDetailsUi() {
-
+        Intent intent = new Intent(getContext(), BudgetActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -163,6 +169,15 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
         switch (v.getId()) {
             case R.id.btn_remember:
                 presenter.addNewJournal();
+                break;
+            case R.id.tv_income_value:
+            case R.id.tv_payout_value:
+                Intent intent = new Intent();
+                intent.putExtra("index", JournalType.THIS_MONTH.value());
+                startActivity(ConsumeDetailActivity.class, intent);
+                break;
+            case R.id.tv_surplus_value:
+                presenter.openSurplusDetails();
                 break;
             default:
         }
