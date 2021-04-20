@@ -34,7 +34,6 @@ import com.example.jorunal_bishe.consume.TodayDetailActivity;
 import com.example.jorunal_bishe.eventbus.UpdateEvent;
 import com.example.jorunal_bishe.record.RecordActivity;
 import com.example.jorunal_bishe.util.JDateKit;
-import com.example.jorunal_bishe.widgets.TitleView;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -50,8 +49,8 @@ import butterknife.ButterKnife;
 @ContentView(R.layout.fragment_money)
 public class MoneyFragment extends FragmentBase implements MoneyContract.View, View.OnClickListener {
 
-    @BindView(R.id.titleView)
-    TitleView titleView;
+    @BindView(R.id.tv_date)
+    TextView tv_date;
     @BindView(R.id.tv_income_value)
     TextView tvIncome;
     @BindView(R.id.tv_payout_value)
@@ -104,7 +103,7 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             sp.setSpan(new RelativeSizeSpan(1.0f), month.length(), sp.length(),
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            titleView.setLeftDetail(R.drawable.selector_menu, sp);
+            tv_date.setText(sp.toString());
         }
     }
 

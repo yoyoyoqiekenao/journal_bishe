@@ -2,6 +2,7 @@ package com.example.jorunal_bishe.mine;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.base.FragmentBase;
@@ -23,12 +24,18 @@ public class MineFragment extends FragmentBase implements View.OnClickListener {
 
     @BindView(R.id.item_update_pwd)
     SettingItemView item_update_pwd;
+    @BindView(R.id.item_update)
+    SettingItemView item_update;
+    @BindView(R.id.item_about)
+    SettingItemView item_about;
 
     @Override
     protected void initWidgets() {
         ButterKnife.bind(this, view);
 
         item_update_pwd.setOnClickListener(this);
+        item_update.setOnClickListener(this);
+        item_about.setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +43,12 @@ public class MineFragment extends FragmentBase implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.item_update_pwd:
                 startActivity(new Intent(getContext(), ModifyClassifyActivity.class));
+                break;
+            case R.id.item_update:
+                Toast.makeText(getContext(), "版本更新", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.item_about:
+
                 break;
             default:
         }

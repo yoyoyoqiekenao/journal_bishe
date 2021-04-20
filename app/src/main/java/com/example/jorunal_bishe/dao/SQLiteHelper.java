@@ -10,63 +10,72 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-	public static final int DB_VERSION = 1;
-	public static final String DB_NAME = "journal";
-	public static final String TB_BUDGET = "tb_budget";
-	public static final String TB_JOURNAL = "tb_journal";
-	public static final String TB_CLASSIFY = "tb_classify";
-	public static final String TB_SUBCLASS = "tb_subclass";
+    public static final int DB_VERSION = 1;
+    public static final String DB_NAME = "journal";
+    public static final String TB_BUDGET = "tb_budget";
+    public static final String TB_JOURNAL = "tb_journal";
+    public static final String TB_CLASSIFY = "tb_classify";
+    public static final String TB_SUBCLASS = "tb_subclass";
+    public static final String TB_NOTE = "tb_note";
 
-	public SQLiteHelper(Context context) {
-		super(context, DB_NAME, null, DB_VERSION);
-	}
+    public SQLiteHelper(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
+    }
 
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-		//onUpgrade(sqLiteDatabase, 0, DB_VERSION);
-		db.execSQL("create table if not exists " + TB_BUDGET + "(" +
-				TbBudget.ID + " integer primary key," +
-				TbBudget.INDEX + " integer," +
-				TbBudget.TYPE + " varchar," +
-				TbBudget.START + " varchar," +
-				TbBudget.END + " varchar," +
-				TbBudget.MONEY + " double" + ")");
-		db.execSQL("create table if not exists " + TB_JOURNAL + "(" +
-				TbJournal.ID + " integer primary key," +
-				TbJournal.JOURNAL + " integer," +
-				TbJournal.ROOT_TYPE + " varchar," +
-				TbJournal.SUB_TYPE + " varchar," +
-				TbJournal.DESCRIPTION + " varchar," +
-				TbJournal.DATE + " varchar," +
-				TbJournal.TIME + " varchar," +
-				TbJournal.WEEK + " varchar," +
-				TbJournal.MONEY + " double," +
-				TbJournal.IMG_PATH + " varchar" + ")");
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        //onUpgrade(sqLiteDatabase, 0, DB_VERSION);
+        db.execSQL("create table if not exists " + TB_NOTE + "(" +
+                TbNote.ID + " integer primary key," +
+                TbNote.DATE + " varchar," +
+                TbNote.TIME + " varchar," +
+                TbNote.WEEK + " varchar," +
+                TbNote.CONTENT + " varchar" + ")");
 
-		db.execSQL("create table if not exists " + TB_CLASSIFY + "(" +
-				TbClassify.ID + " integer primary key," +
-				TbClassify.INDEX + " integer," +
-				TbClassify.IMG + " blob," +
-				TbClassify.NAME + " varchar," +
-				TbClassify.TYPE + " integer" + ")");
 
-		db.execSQL("create table if not exists " + TB_SUBCLASS + "(" +
-				TbSubclass.ID + " integer primary key," +
-				TbSubclass.INDEX + " integer," +
-				TbSubclass.NAME + " varchar" + ")");
-	}
+        db.execSQL("create table if not exists " + TB_BUDGET + "(" +
+                TbBudget.ID + " integer primary key," +
+                TbBudget.INDEX + " integer," +
+                TbBudget.TYPE + " varchar," +
+                TbBudget.START + " varchar," +
+                TbBudget.END + " varchar," +
+                TbBudget.MONEY + " double" + ")");
+        db.execSQL("create table if not exists " + TB_JOURNAL + "(" +
+                TbJournal.ID + " integer primary key," +
+                TbJournal.JOURNAL + " integer," +
+                TbJournal.ROOT_TYPE + " varchar," +
+                TbJournal.SUB_TYPE + " varchar," +
+                TbJournal.DESCRIPTION + " varchar," +
+                TbJournal.DATE + " varchar," +
+                TbJournal.TIME + " varchar," +
+                TbJournal.WEEK + " varchar," +
+                TbJournal.MONEY + " double," +
+                TbJournal.IMG_PATH + " varchar" + ")");
 
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {
+        db.execSQL("create table if not exists " + TB_CLASSIFY + "(" +
+                TbClassify.ID + " integer primary key," +
+                TbClassify.INDEX + " integer," +
+                TbClassify.IMG + " blob," +
+                TbClassify.NAME + " varchar," +
+                TbClassify.TYPE + " integer" + ")");
+
+        db.execSQL("create table if not exists " + TB_SUBCLASS + "(" +
+                TbSubclass.ID + " integer primary key," +
+                TbSubclass.INDEX + " integer," +
+                TbSubclass.NAME + " varchar" + ")");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {
 //		for (int v = oldV + 1; v <= newV; v++) {
 //			upgradeTo(db, v);
 //		}
-	}
+    }
 
-	/**
-	 * Upgrade database from (version - 1) to version.
-	 */
-	private void upgradeTo(SQLiteDatabase db, int version) {
+    /**
+     * Upgrade database from (version - 1) to version.
+     */
+    private void upgradeTo(SQLiteDatabase db, int version) {
 //		switch (version) {
 //			case 1:
 //				createDownloadsTable(db);
@@ -94,5 +103,5 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 //			default:
 //				throw new IllegalStateException("Don't know how to upgrade to " + version);
 //		}
-	}
+    }
 }
