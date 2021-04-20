@@ -1,5 +1,6 @@
 package com.example.jorunal_bishe.money;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -8,9 +9,11 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +27,7 @@ import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.adapter.MoneyAdapter;
 import com.example.jorunal_bishe.base.FragmentBase;
 import com.example.jorunal_bishe.been.Journal;
+import com.example.jorunal_bishe.record.RecordActivity;
 import com.example.jorunal_bishe.util.JDateKit;
 import com.example.jorunal_bishe.widgets.TitleView;
 
@@ -37,7 +41,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @ContentView(R.layout.fragment_money)
-public class MoneyFragment extends FragmentBase implements MoneyContract.View {
+public class MoneyFragment extends FragmentBase implements MoneyContract.View, View.OnClickListener {
 
     @BindView(R.id.titleView)
     TitleView titleView;
@@ -49,6 +53,8 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View {
     TextView tvSurplus;
     @BindView(R.id.rc_journal)
     ListView rc_journal;
+    @BindView(R.id.btn_remember)
+    Button btnRemember;
 
     private MoneyContract.Presenter presenter;
     private MoneyAdapter mAdapter;
@@ -71,6 +77,7 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View {
 
         presenter.loadJournals();
         setCurDate();
+        btnRemember.setOnClickListener(this);
     }
 
     private void setCurDate() {
@@ -123,7 +130,8 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View {
 
     @Override
     public void showAddJournal() {
-
+        Intent intent = new Intent(getContext(), RecordActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -139,5 +147,15 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View {
     @Override
     public void setPresenter(MoneyContract.Presenter presenter) {
         this.presenter = presenter;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_remember:
+                presenter.addNewJournal();
+                break;
+            default:
+        }
     }
 }
