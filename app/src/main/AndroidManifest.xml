@@ -57,6 +57,12 @@
         <activity
             android:name=".budget.BudgetActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".mine.ModifyClassifyActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".mine.NewClassifyActivity"
+            android:screenOrientation="portrait"></activity>
 
         <service
             android:name=".JournalService"

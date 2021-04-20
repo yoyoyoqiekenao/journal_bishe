@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.jorunal_bishe.adapter.ExamplePagerAdapter;
 import com.example.jorunal_bishe.base.ActivityPermissions;
+import com.example.jorunal_bishe.mine.MineFragment;
 import com.example.jorunal_bishe.money.MoneyFragment;
 import com.example.jorunal_bishe.permission.PermissionListener;
 import com.example.jorunal_bishe.share.ShareFragment;
@@ -71,7 +72,7 @@ public class MainActivity extends ActivityPermissions {
         mList.add(new ShareFragment());
         mList.add(new MoneyFragment());
         mList.add(new ShareFragment());
-        mList.add(new ShareFragment());
+        mList.add(new MineFragment());
 
         mExamplePagerAdapter = new ExamplePagerAdapter(getSupportFragmentManager(), mList);
         mViewPager.setAdapter(mExamplePagerAdapter);
