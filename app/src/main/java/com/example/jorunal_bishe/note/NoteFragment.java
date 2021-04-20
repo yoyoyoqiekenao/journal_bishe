@@ -7,15 +7,19 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.base.FragmentBase;
 import com.example.jorunal_bishe.been.Note;
 
 import org.xutils.view.annotation.ContentView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -31,6 +35,7 @@ public class NoteFragment extends FragmentBase implements NoteContract.View, Vie
 
     private NoteContract.Presenter presenter;
     private NoteAdapter mAdapter;
+    private List<Note> mList = new ArrayList<>();
 
     @Override
     protected void initWidgets() {
@@ -39,6 +44,21 @@ public class NoteFragment extends FragmentBase implements NoteContract.View, Vie
         presenter = new NotePresenter(this, context);
         presenter.initDataBase();
         tvAdd.setOnClickListener(this);
+
+        mAdapter = new NoteAdapter(mList);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        rcNote.setLayoutManager(manager);
+        rcNote.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                Intent intent = new Intent(getContext(),EditNoteActivity.class);
+                intent.putExtra("time", mList.get(position).getDate());
+                intent.putExtra("context", mList.get(position).getContent());
+                intent.putExtra("isUpdate", true);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,12 +69,9 @@ public class NoteFragment extends FragmentBase implements NoteContract.View, Vie
 
     @Override
     public void showNotes(List<Note> list) {
-        mAdapter = new NoteAdapter(list);
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        rcNote.setLayoutManager(manager);
-        rcNote.setAdapter(mAdapter);
-
-        mAdapter.setNewData(list);
+        mList.clear();
+        mList.addAll(list);
+        mAdapter.setNewData(mList);
     }
 
     @Override

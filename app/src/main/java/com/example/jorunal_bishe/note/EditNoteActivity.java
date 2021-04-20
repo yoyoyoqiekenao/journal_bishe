@@ -24,6 +24,10 @@ public class EditNoteActivity extends ActivityBase implements View.OnClickListen
     private int type = 1;
     private TbNoteDao tbNoteDao;
 
+    private String mTime;
+    private String mContext;
+    private Boolean isUpdate;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_editnote;
@@ -32,6 +36,12 @@ public class EditNoteActivity extends ActivityBase implements View.OnClickListen
     @Override
     protected void initParams(Bundle savedInstanceState) {
         ButterKnife.bind(this);
+
+        mTime = getIntent().getStringExtra("time");
+        mContext = getIntent().getStringExtra("context");
+        isUpdate = getIntent().getBooleanExtra("isUpdate", false);
+
+        cet_description.setText(mContext);
 
         tbNoteDao = TbNoteDao.getInstance();
         btn_save.setOnClickListener(this);
@@ -50,7 +60,12 @@ public class EditNoteActivity extends ActivityBase implements View.OnClickListen
                 tbNote.setType(1);
                 tbNote.setContent(text);
                 tbNote.setDate("刚刚创建");
-                tbNoteDao.saveNote(tbNote);
+                if(isUpdate){
+                    tbNoteDao.updateNote(tbNote);
+                }else {
+                    tbNoteDao.saveNote(tbNote);
+
+                }
                 finish();
                 break;
             default:
