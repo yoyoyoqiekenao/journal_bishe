@@ -27,10 +27,13 @@ import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.adapter.MoneyAdapter;
 import com.example.jorunal_bishe.base.FragmentBase;
 import com.example.jorunal_bishe.been.Journal;
+import com.example.jorunal_bishe.eventbus.UpdateEvent;
 import com.example.jorunal_bishe.record.RecordActivity;
 import com.example.jorunal_bishe.util.JDateKit;
 import com.example.jorunal_bishe.widgets.TitleView;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.xutils.view.annotation.ContentView;
 
 import java.util.ArrayList;
@@ -156,6 +159,27 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
                 presenter.addNewJournal();
                 break;
             default:
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(UpdateEvent response) {
+        if (response.from.equals("EditActivity")) {
+            if (response.event.equals("delete")) {
+                presenter.loadJournals();
+            } else if (response.event.equals("update")) {
+                presenter.loadJournals();
+            }
+        } else if (response.from.equals("RecordActivity")) {
+            if (response.event.equals("add")) {
+                presenter.loadJournals();
+            }
+        } else if (response.from.equals("BudgetActivity")) {
+            if (response.event.equals("budget")) {
+                presenter.loadJournals();
+            } else if (response.event.equals("change_budget")) {
+                presenter.loadJournals();
+            }
         }
     }
 }
