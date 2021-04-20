@@ -27,6 +27,7 @@ import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.adapter.MoneyAdapter;
 import com.example.jorunal_bishe.base.FragmentBase;
 import com.example.jorunal_bishe.been.Journal;
+import com.example.jorunal_bishe.consume.ConsumeDetailActivity;
 import com.example.jorunal_bishe.consume.TodayDetailActivity;
 import com.example.jorunal_bishe.eventbus.UpdateEvent;
 import com.example.jorunal_bishe.record.RecordActivity;
@@ -147,7 +148,9 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
 
     @Override
     public void showConsumeDetailUi(Journal journal) {
-
+        Intent intent = new Intent(getContext(), ConsumeDetailActivity.class);
+        intent.putExtra("index", journal.getType().value());
+        startActivity(intent);
     }
 
     @Override

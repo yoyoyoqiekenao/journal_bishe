@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_consume_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".consume.ConsumeDetailActivity">
+
+    <com.example.jorunal_bishe.widgets.TitleView
+        android:id="@+id/titleview"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleview"
+        android:background="@drawable/main_top_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/surplus"
+            android:textSize="@dimen/text_size_18SP" />
+
+        <TextView
+            android:id="@+id/tv_surplus_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/text_size_25SP" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_margin_5">
+
+            <View
+                android:id="@+id/center_view"
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/income"
+                android:textSize="@dimen/text_size_18SP" />
+
+            <TextView
+                android:id="@+id/tv_income_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_margin_5"
+                android:layout_toLeftOf="@id/center_view"
+                android:textSize="@dimen/text_size_18SP" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_margin_5"
+                android:layout_toRightOf="@id/center_view"
+                android:text="@string/pay_out"
+                android:textSize="@dimen/text_size_18SP" />
+
+            <TextView
+                android:id="@+id/tv_payout_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/text_size_18SP" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.example.jorunal_bishe.widgets.ScrollChildSwipeRefreshLayout
+        android:id="@+id/refresh_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_header"
+        android:layout_marginTop="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.example.jorunal_bishe.widgets.ScrollChildSwipeRefreshLayout>
+</RelativeLayout>
