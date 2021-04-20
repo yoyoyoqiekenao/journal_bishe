@@ -1,5 +1,7 @@
 package com.example.jorunal_bishe.dao;
 
+import android.util.Log;
+
 /**
  * @author : 徐无敌
  * date   : 2021/4/2017:25
@@ -8,7 +10,43 @@ package com.example.jorunal_bishe.dao;
 public class TbNote {
     public static final String ID = "_id";
     public static final String DATE = "date";
-    public static final String TIME = "time";
-    public static final String WEEK = "week";
     public static final String CONTENT = "content";
+
+    private Long id;
+    //创建时间
+    private String date;
+    //备忘录内容
+    private String content;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "TbNote{" +
+                "date='" + date + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

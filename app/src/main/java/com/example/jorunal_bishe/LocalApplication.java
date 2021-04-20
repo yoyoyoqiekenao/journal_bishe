@@ -4,6 +4,7 @@ import com.example.jorunal_bishe.base.BaseApplication;
 import com.example.jorunal_bishe.dao.TbBudgetDao;
 import com.example.jorunal_bishe.dao.TbClassifyDao;
 import com.example.jorunal_bishe.dao.TbJournalDao;
+import com.example.jorunal_bishe.dao.TbNoteDao;
 import com.example.jorunal_bishe.dao.TbSubclassDao;
 import com.example.jorunal_bishe.exceptions.BaseExceptionHandler;
 import com.example.jorunal_bishe.exceptions.LocalFileHandler;
@@ -39,6 +40,7 @@ public class LocalApplication extends BaseApplication {
         TbJournalDao.getInstance().init(this);
         TbClassifyDao.getInstance().init(this);
         TbSubclassDao.getInstance().init(this);
+        TbNoteDao.getInstance().init(this);
         // Create the APP crash log directory
         File appFolder = new File(JFileKit.getDiskCacheDir(this) + "/log/");
         JFileKit.createFolder(appFolder);
