@@ -55,6 +55,7 @@ dependencies {
     compile 'com.contrarywind:Android-PickerView:3.2.4'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.13'
 
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
 
 

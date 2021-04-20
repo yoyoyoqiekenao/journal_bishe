@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import androidx.core.content.ContextCompat;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.dao.TbJournal;
 import com.example.jorunal_bishe.util.JDataKit;

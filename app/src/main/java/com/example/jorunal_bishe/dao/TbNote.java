@@ -11,12 +11,23 @@ public class TbNote {
     public static final String ID = "_id";
     public static final String DATE = "date";
     public static final String CONTENT = "content";
+    public static final String TYPE = "type";
 
     private Long id;
     //创建时间
     private String date;
     //备忘录内容
     private String content;
+
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public String getDate() {
         return date;
@@ -45,8 +56,10 @@ public class TbNote {
     @Override
     public String toString() {
         return "TbNote{" +
-                "date='" + date + '\'' +
+                "id=" + id +
+                ", date='" + date + '\'' +
                 ", content='" + content + '\'' +
+                ", type=" + type +
                 '}';
     }
 }

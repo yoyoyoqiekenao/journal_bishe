@@ -28,6 +28,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("create table if not exists " + TB_NOTE + "(" +
                 TbNote.ID + " integer primary key," +
                 TbNote.DATE + " varchar," +
+                TbNote.TYPE + " varchar," +
                 TbNote.CONTENT + " varchar" + ")");
 
 

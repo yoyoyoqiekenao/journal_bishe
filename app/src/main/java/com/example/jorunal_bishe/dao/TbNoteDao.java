@@ -33,6 +33,7 @@ public class TbNoteDao {
         ContentValues values = new ContentValues();
         values.put(TbNote.CONTENT, note.getContent());
         values.put(TbNote.DATE, note.getDate());
+        values.put(TbNote.TYPE, note.getType());
         return db.insert(SQLiteHelper.TB_NOTE, null, values);
     }
 
@@ -40,6 +41,7 @@ public class TbNoteDao {
         ContentValues values = new ContentValues();
         values.put(TbNote.DATE, note.getDate());
         values.put(TbNote.CONTENT, note.getContent());
+        values.put(TbNote.TYPE, note.getType());
         String selection = TbNote.ID + "=?";
         String[] selectionArgs = new String[]{String.valueOf(note.getId())};
         return db.update(SQLiteHelper.TB_NOTE, values, selection, selectionArgs);
@@ -51,19 +53,23 @@ public class TbNoteDao {
         return db.delete(SQLiteHelper.TB_NOTE, selection, selectionArgs);
     }
 
-    private List<TbNote> getNote(Cursor cursor) {
+    public List<TbNote> getNote(int type) {
+        String[] columns = new String[]{TbNote.DATE, TbNote.CONTENT, TbNote.TYPE};
+        String selection = TbNote.TYPE + "=?";
+        String[] selectionArgs = new String[]{String.valueOf(type)};
+        Cursor cursor = db.query(SQLiteHelper.TB_NOTE, columns, selection, selectionArgs, null, null, null);
+        List<TbNote> notes = new ArrayList<>();
         if (cursor == null) {
-            return null;
+            return notes;
         }
-        List<TbNote> tbNotes = new ArrayList<>();
         while (cursor.moveToNext()) {
             TbNote tbNote = new TbNote();
-            tbNote.setId(cursor.getLong(cursor.getColumnIndex(TbNote.ID)));
-            tbNote.setDate(cursor.getString(cursor.getColumnIndex(TbNote.DATE)));
             tbNote.setContent(cursor.getString(cursor.getColumnIndex(TbNote.CONTENT)));
-            tbNotes.add(tbNote);
+            tbNote.setDate(cursor.getString(cursor.getColumnIndex(TbNote.DATE)));
+            tbNote.setType(cursor.getInt(cursor.getColumnIndex(TbNote.TYPE)));
+            notes.add(tbNote);
         }
-        return tbNotes;
+        return notes;
     }
 
     public void close() {
