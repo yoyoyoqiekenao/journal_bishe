@@ -47,9 +47,9 @@ public class TbNoteDao {
         return db.update(SQLiteHelper.TB_NOTE, values, selection, selectionArgs);
     }
 
-    public int deleteNote(long id) {
-        String selection = TbNote.ID + "=?";
-        String[] selectionArgs = new String[]{String.valueOf(id)};
+    public int deleteNote(String date) {
+        String selection = TbNote.DATE + "=?";
+        String[] selectionArgs = new String[]{String.valueOf(date)};
         return db.delete(SQLiteHelper.TB_NOTE, selection, selectionArgs);
     }
 

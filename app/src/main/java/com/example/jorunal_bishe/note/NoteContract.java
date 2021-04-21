@@ -12,9 +12,13 @@ public class NoteContract {
         void initDataBase();
 
         void loadNotes();
+
+        void deleteNotes(String date);
     }
 
     interface View extends BaseView<Presenter> {
         void showNotes(List<Note> list);
+
+        void deleteNotes();
     }
 }

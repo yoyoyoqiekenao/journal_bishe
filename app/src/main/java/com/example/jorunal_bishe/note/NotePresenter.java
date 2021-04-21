@@ -45,6 +45,12 @@ public class NotePresenter implements NoteContract.Presenter {
     }
 
     @Override
+    public void deleteNotes(String date) {
+        tbNoteDao.deleteNote(date);
+        view.deleteNotes();
+    }
+
+    @Override
     public void start() {
 
     }
