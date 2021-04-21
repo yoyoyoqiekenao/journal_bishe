@@ -78,7 +78,7 @@ public class MainActivity extends ActivityPermissions {
         mExamplePagerAdapter = new ExamplePagerAdapter(getSupportFragmentManager(), mList);
         mViewPager.setAdapter(mExamplePagerAdapter);
         mViewPager.setOffscreenPageLimit(4);
-        mMagicIndicator.setBackgroundColor(Color.BLACK);
+        mMagicIndicator.setBackgroundColor(Color.parseColor("#F9C848"));
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdjustMode(true);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
@@ -94,7 +94,7 @@ public class MainActivity extends ActivityPermissions {
                 View customLayout = LayoutInflater.from(context).inflate(R.layout.simple_pager_title_layout, null);
                 final ImageView titleImg = (ImageView) customLayout.findViewById(R.id.title_img);
                 final TextView titleText = (TextView) customLayout.findViewById(R.id.title_text);
-                titleImg.setImageResource(R.mipmap.ic_launcher);
+                //titleImg.setImageResource(R.mipmap.ic_launcher);
                 titleText.setText(mDataList.get(index));
                 commonPagerTitleView.setContentView(customLayout);
 
@@ -112,6 +112,20 @@ public class MainActivity extends ActivityPermissions {
 
                     @Override
                     public void onLeave(int index, int totalCount, float leavePercent, boolean leftToRight) {
+                        switch (index) {
+                            case 0:
+                                titleImg.setImageResource(R.mipmap.iv_read);
+                                break;
+                            case 1:
+                                titleImg.setImageResource(R.mipmap.iv_money);
+                                break;
+                            case 2:
+                                titleImg.setImageResource(R.mipmap.iv_note);
+                                break;
+                            case 3:
+                                titleImg.setImageResource(R.mipmap.iv_user);
+                                break;
+                        }
                         titleImg.setScaleX(1.3f + (0.8f - 1.3f) * leavePercent);
                         titleImg.setScaleY(1.3f + (0.8f - 1.3f) * leavePercent);
                     }

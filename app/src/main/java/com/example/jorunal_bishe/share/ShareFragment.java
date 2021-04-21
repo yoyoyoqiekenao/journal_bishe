@@ -12,6 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,10 +24,12 @@ import com.example.jorunal_bishe.util.JLogUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ShareFragment extends Fragment {
+public class ShareFragment extends Fragment implements View.OnClickListener {
 
     @BindView(R.id.web)
     WebView webView;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     @Nullable
     @Override
@@ -34,6 +37,8 @@ public class ShareFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_share, container, false);
         ButterKnife.bind(this, view);
         initWebViewSetting();
+
+        ivBack.setOnClickListener(this);
         return view;
     }
 
@@ -126,5 +131,16 @@ public class ShareFragment extends Fragment {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_back:
+                if (webView.canGoBack()) {
+                    webView.goBack();
 
+                }
+                break;
+            default:
+        }
+    }
 }
