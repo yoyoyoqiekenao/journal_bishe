@@ -41,37 +41,40 @@ public class NoteFragment extends FragmentBase implements NoteContract.View, Vie
     protected void initWidgets() {
         ButterKnife.bind(this, view);
 
-        presenter = new NotePresenter(this, context);
-        presenter.initDataBase();
+
         tvAdd.setOnClickListener(this);
 
         mAdapter = new NoteAdapter(mList);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         rcNote.setLayoutManager(manager);
         rcNote.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                Intent intent = new Intent(getContext(),EditNoteActivity.class);
-                intent.putExtra("time", mList.get(position).getDate());
-                intent.putExtra("context", mList.get(position).getContent());
-                intent.putExtra("isUpdate", true);
-                startActivity(intent);
-            }
-        });
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        presenter = new NotePresenter(this, context);
+        presenter.initDataBase();
         presenter.loadNotes();
     }
 
     @Override
     public void showNotes(List<Note> list) {
-        mList.clear();
-        mList.addAll(list);
-        mAdapter.setNewData(mList);
+
+
+        mAdapter.setNewData(list);
+
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                Intent intent = new Intent(getContext(), EditNoteActivity.class);
+                intent.putExtra("time", list.get(position).getDate());
+                intent.putExtra("context", list.get(position).getContent());
+                intent.putExtra("isUpdate", true);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

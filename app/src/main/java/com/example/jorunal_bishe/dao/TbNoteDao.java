@@ -42,8 +42,8 @@ public class TbNoteDao {
         values.put(TbNote.DATE, note.getDate());
         values.put(TbNote.CONTENT, note.getContent());
         values.put(TbNote.TYPE, note.getType());
-        String selection = TbNote.ID + "=?";
-        String[] selectionArgs = new String[]{String.valueOf(note.getId())};
+        String selection = TbNote.DATE + "=?";
+        String[] selectionArgs = new String[]{String.valueOf(note.getDate())};
         return db.update(SQLiteHelper.TB_NOTE, values, selection, selectionArgs);
     }
 

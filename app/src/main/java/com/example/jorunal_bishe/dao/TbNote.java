@@ -13,13 +13,13 @@ public class TbNote {
     public static final String CONTENT = "content";
     public static final String TYPE = "type";
 
-    private Long id;
+    public Long id;
     //创建时间
-    private String date;
+    public String date;
     //备忘录内容
-    private String content;
+    public String content;
 
-    private int type;
+    public int type;
 
     public int getType() {
         return type;
