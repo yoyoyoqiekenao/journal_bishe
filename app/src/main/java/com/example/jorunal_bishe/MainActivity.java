@@ -61,10 +61,10 @@ public class MainActivity extends ActivityPermissions {
     @Override
     protected void initParams(Bundle savedInstanceState) {
         ButterKnife.bind(this);
-        ImmersionBar.with(this).init();
+        //ImmersionBar.with(this).init();
         requestRuntimePermission();
         initMagicIndicator();
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             firstStart();
         }
     }
