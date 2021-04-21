@@ -1,7 +1,9 @@
 package com.example.jorunal_bishe.record;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bigkoo.pickerview.OptionsPickerView;
@@ -49,7 +53,7 @@ import java.util.Locale;
  * desc   :
  */
 @ContentView(R.layout.fragment_payout)
-public class PayoutFragment  extends FragmentBase implements RecordContract.View {
+public class PayoutFragment extends FragmentBase implements RecordContract.View {
     /**
      * 调用相机拍照
      */
@@ -105,6 +109,7 @@ public class PayoutFragment  extends FragmentBase implements RecordContract.View
                 presenter.openCalendar();
                 break;
             case R.id.ib_camera:
+
                 if (isSelectImg) {
                     Intent intent = new Intent();
                     intent.putExtra("url", photoSavePath);
@@ -162,8 +167,8 @@ public class PayoutFragment  extends FragmentBase implements RecordContract.View
             ToastUtil.getInstance().showMessage("内容不能为空");
             return;
         }
-        if(TextUtils.isEmpty(rootType))
-            return ;
+        if (TextUtils.isEmpty(rootType))
+            return;
         presenter.saveJournals(money, rootType, type, description, dates, photoSavePath);
 
         EventBusUtil.postSync(new UpdateEvent("add", "RecordActivity", this));

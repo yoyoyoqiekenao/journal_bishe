@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -67,6 +68,7 @@ public class MainActivity extends ActivityPermissions {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             firstStart();
         }
+        initPhotoError();
     }
 
     private void initMagicIndicator() {
@@ -192,6 +194,13 @@ public class MainActivity extends ActivityPermissions {
             Intent intent = new Intent(MainActivity.this, JournalService.class);
             startService(intent);
         }
+    }
+
+    private void initPhotoError(){
+        // android 7.0系统解决拍照的问题
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        builder.detectFileUriExposure();
     }
 
 
