@@ -140,6 +140,12 @@ public class NoteFragment extends FragmentBase implements NoteContract.View, Vie
                 onResume();
             }
         });
+        tvNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPop.dismiss();
+            }
+        });
         mPop.showAtLocation(ll, Gravity.CENTER, 0, 0);
 
     }
