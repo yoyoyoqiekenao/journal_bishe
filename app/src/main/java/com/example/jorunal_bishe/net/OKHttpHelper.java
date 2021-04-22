@@ -82,11 +82,11 @@ public class OKHttpHelper {
             .build();
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    public static <T> void put(final String url, Map<String, String> param, final Callback<T> callback) {
+    public static <T> void post(final String url, Map<String, String> param, final Callback<T> callback) {
         RequestBody body = RequestBody.create(JSON, gson.toJson(param));
         final Request request = new Request.Builder()
                 .url(url)
-                .put(body)
+                .post(body)
                 .build();
         okHttpClient.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
