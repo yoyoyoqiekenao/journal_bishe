@@ -104,12 +104,12 @@ public class MainActivity extends ActivityPermissions {
                 commonPagerTitleView.setOnPagerTitleChangeListener(new CommonPagerTitleView.OnPagerTitleChangeListener() {
                     @Override
                     public void onSelected(int index, int totalCount) {
-                        titleText.setTextColor(Color.WHITE);
+                        titleText.setTextColor(Color.BLACK);
                     }
 
                     @Override
                     public void onDeselected(int index, int totalCount) {
-                        titleText.setTextColor(Color.LTGRAY);
+                        titleText.setTextColor(Color.WHITE);
                     }
 
                     @Override

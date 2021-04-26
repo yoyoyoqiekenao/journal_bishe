@@ -34,12 +34,14 @@ import okhttp3.Response;
  * date   : 2021/4/2214:46
  * desc   :
  */
-public class OKHttpHelper {
+public class OKHttpHelper  {
+    private static final String TAG = "OKHttpHelper";
     private static final String WFC_OKHTTP_COOKIE_CONFIG = "WFC_OK_HTTP_COOKIES";
     private static final Map<String, List<Cookie>> cookieStore = new ConcurrentHashMap<>();
-    private static WeakReference<Context> AppContext;
     private static Gson gson = new Gson();
+    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
+    private static WeakReference<Context>  AppContext;
     public static void init(Context context) {
         AppContext = new WeakReference<>(context);
     }
@@ -52,12 +54,12 @@ public class OKHttpHelper {
                 public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
                     cookieStore.put(url.host(), cookies);
                     if (AppContext != null && AppContext.get() != null) {
-                        SharedPreferences sharedPreferences = AppContext.get().getSharedPreferences(WFC_OKHTTP_COOKIE_CONFIG, 0);
-                        Set<String> set = new HashSet<>();
-                        for (Cookie k : cookies) {
+                        SharedPreferences sp = AppContext.get().getSharedPreferences(WFC_OKHTTP_COOKIE_CONFIG, 0);
+                        Set<String>  set = new HashSet<>();
+                        for (Cookie k:cookies) {
                             set.add(gson.toJson(k));
                         }
-                        sharedPreferences.edit().putStringSet(url.host(), set).apply();
+                        sp.edit().putStringSet(url.host(), set).apply();
                     }
                 }
 
@@ -67,27 +69,28 @@ public class OKHttpHelper {
                     if (cookies == null) {
                         if (AppContext != null && AppContext.get() != null) {
                             SharedPreferences sp = AppContext.get().getSharedPreferences(WFC_OKHTTP_COOKIE_CONFIG, 0);
-                            Set<String> set = sp.getStringSet(url.host(), new HashSet<>());
+                            Set<String>  set = sp.getStringSet(url.host(), new HashSet<>());
                             cookies = new ArrayList<>();
-                            for (String s : set) {
+                            for (String s:set) {
                                 Cookie cookie = gson.fromJson(s, Cookie.class);
                                 cookies.add(cookie);
                             }
                             cookieStore.put(url.host(), cookies);
                         }
                     }
+
                     return cookies;
                 }
             })
             .build();
-    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    public static <T> void post(final String url, Map<String, String> param, final Callback<T> callback) {
+    public static <T> void post(final String url, Map<String, Object> param, final Callback<T> callback) {
         RequestBody body = RequestBody.create(JSON, gson.toJson(param));
         final Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
+
         okHttpClient.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -104,12 +107,13 @@ public class OKHttpHelper {
         });
     }
 
-    private static <T> void handleResponse(String url, Call call, Response response, Callback<T> callback) {
+    private static <T> void handleResponse(String url, Call call, okhttp3.Response response, Callback<T> callback) {
         if (callback != null) {
             if (!response.isSuccessful()) {
                 callback.onFailure(response.code(), response.message());
                 return;
             }
+
             Type type;
             if (callback instanceof SimpleCallback) {
                 Type types = callback.getClass().getGenericSuperclass();
@@ -118,10 +122,12 @@ public class OKHttpHelper {
                 Type[] types = callback.getClass().getGenericInterfaces();
                 type = ((ParameterizedType) types[0]).getActualTypeArguments()[0];
             }
+
             if (type.equals(Void.class)) {
-                callback.onSuccess(null);
+                callback.onSuccess((T) null);
                 return;
             }
+
             if (type.equals(String.class)) {
                 try {
                     callback.onSuccess((T) response.body().string());

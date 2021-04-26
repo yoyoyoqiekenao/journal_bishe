@@ -95,7 +95,7 @@ public class ShareFragment extends Fragment implements View.OnClickListener {
         webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);//开启硬件加速
         webView.getSettings().setJavaScriptEnabled(true);
 
-        loadJSONHTML("http://szhd.kmdns.net:8082/");
+        loadJSONHTML("http://121.196.51.139:8082/");
     }
 
     private void loadJSONHTML(String url) {
