@@ -2,6 +2,7 @@ package com.example.jorunal_bishe.consume;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -111,12 +112,19 @@ public class TodayDetailActivity extends ActivityFrame implements TodayContract.
         }
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        presenter.loadJournals();
+        presenter.loadTodayJournals();
+    }
 
     @Override
     public void showJournals(List<TbJournal> incomes, List<TbJournal> payOuts) {
-        //journals.clear();
+        journals.clear();
         journals.addAll(incomes);
         journals.addAll(payOuts);
+        Log.d("xuwudi", "size===" + journals.size());
         Collections.sort(journals, new DateComparator());
         beforeAdapter.notifyDataSetChanged();
     }

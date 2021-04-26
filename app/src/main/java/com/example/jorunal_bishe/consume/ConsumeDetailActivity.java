@@ -37,7 +37,7 @@ import java.util.List;
 public class ConsumeDetailActivity extends ActivityFrame
         implements ConsumeContract.View,
         BeforeAdapter.OnImgClickListener,
-        BeforeAdapter.OnItemClickListener  {
+        BeforeAdapter.OnItemClickListener {
 
     @ViewInject(R.id.titleview)
     private TitleView titleView;
@@ -156,6 +156,12 @@ public class ConsumeDetailActivity extends ActivityFrame
     @Override
     public void setPresenter(ConsumeContract.Presenter presenter) {
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        presenter.loadJournals(start, end);
     }
 
     @Override
