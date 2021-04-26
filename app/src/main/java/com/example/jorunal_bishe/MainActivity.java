@@ -48,7 +48,7 @@ public class MainActivity extends ActivityPermissions {
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
 
-    private static final String[] CHANNELS = new String[]{"分享", "理财", "便签", "我的"};
+    private static final String[] CHANNELS = new String[]{"资讯", "理财", "便签", "我的"};
     private List<String> mDataList = Arrays.asList(CHANNELS);
     private ExamplePagerAdapter mExamplePagerAdapter;
     private List<Fragment> mList = new ArrayList<>();
