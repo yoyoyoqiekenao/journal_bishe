@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.example.jorunal_bishe.R;
 import com.example.jorunal_bishe.base.FragmentBase;
+import com.example.jorunal_bishe.dao.TbSubclass;
+import com.example.jorunal_bishe.dao.TbSubclassDao;
 import com.example.jorunal_bishe.util.ClassifyType;
 
 import org.xutils.view.annotation.ContentView;
@@ -45,6 +47,9 @@ public class FragmentModifyFirst extends FragmentBase implements ClassifyContrac
     private ClassifyContract.Presenter presenter;
     private PopupWindow mPop;
 
+    private TbSubclassDao subclassDao;
+    private List<TbSubclass> subclasses;
+
 
     @SuppressLint("ValidFragment")
     private FragmentModifyFirst() {
@@ -63,6 +68,8 @@ public class FragmentModifyFirst extends FragmentBase implements ClassifyContrac
 
     @Override
     protected void initWidgets() {
+        subclassDao = TbSubclassDao.getInstance();
+
         presenter = new ClassifyPresenter(context, this);
         presenter.initDataBase();
         classifyAdapter = new ClassifyAdapter(context, datas);
@@ -100,14 +107,15 @@ public class FragmentModifyFirst extends FragmentBase implements ClassifyContrac
                 if (position == datas.size() - 1) {
 
                 } else {
-                    showDeletePop(position);
+                    showDeletePop(position, datas.get(position).getName());
+
                 }
                 return true;
             }
         });
     }
 
-    private void showDeletePop(int position) {
+    private void showDeletePop(int position, String name) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.pop_delete, null);
         mPop = new PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         TextView tvSure = view.findViewById(R.id.tv_sure);
@@ -122,9 +130,8 @@ public class FragmentModifyFirst extends FragmentBase implements ClassifyContrac
         tvSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.deleteClassify(name, position);
                 mPop.dismiss();
-                onResume();
             }
         });
         tvNo.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +142,8 @@ public class FragmentModifyFirst extends FragmentBase implements ClassifyContrac
         });
         mPop.showAtLocation(rootView, Gravity.CENTER, 0, 0);
     }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -164,6 +173,14 @@ public class FragmentModifyFirst extends FragmentBase implements ClassifyContrac
         classifyAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void deleteClassify(int position) {
+        subclasses = subclassDao.findTbSubclass(datas.get(position).getIndex());
+        for (int i = 0; i < subclasses.size(); i++) {
+            subclassDao.deleteSubclass(subclasses.get(i).name);
+        }
+        presenter.loadClassify(classifyType);
+    }
 
 
     /**

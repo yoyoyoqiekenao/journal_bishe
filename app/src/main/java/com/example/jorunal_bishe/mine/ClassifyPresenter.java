@@ -17,7 +17,7 @@ import java.util.List;
  * date   : 2021/4/2016:55
  * desc   :
  */
-public class ClassifyPresenter implements ClassifyContract.Presenter{
+public class ClassifyPresenter implements ClassifyContract.Presenter {
 
     private ClassifyContract.View view;
     private Context context;
@@ -49,6 +49,12 @@ public class ClassifyPresenter implements ClassifyContract.Presenter{
             loadPayout();
         }
         view.showClassify(classifyInfos);
+    }
+
+    @Override
+    public void deleteClassify(String name,int position) {
+        classifyDao.deleteClassify(name);
+        view.deleteClassify(position);
     }
 
     private void loadIncome() {

@@ -14,10 +14,15 @@ import java.util.List;
 public interface ClassifyContract {
     interface Presenter extends BasePresenter {
         void initDataBase();
+
         void loadClassify(ClassifyType type);
+
+        void deleteClassify(String name,int position);
     }
 
     interface View extends BaseView<Presenter> {
         void showClassify(List<Classify> classify);
+
+        void deleteClassify(int position);
     }
 }
