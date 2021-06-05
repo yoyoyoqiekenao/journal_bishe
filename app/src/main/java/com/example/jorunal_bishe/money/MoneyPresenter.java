@@ -120,8 +120,14 @@ public class MoneyPresenter implements MoneyContract.Presenter {
                 if (budgets == null || budgets.size() == 0) {
                     view.showSurplus(JDataKit.doubleFormat(0));
                 } else {
+                     double outs = 0.0;
+                    List<TbJournal> outList = journalDao.findBetween(startDate,
+                            endDate, TbJournal.PAYOUT);
+                    for (TbJournal payout : outList) {
+                        outs += payout.money;
+                    }
                     for (TbBudget budget : budgets) {
-                        double money = budget.money - payOutSum;
+                        double money = budget.money - outs;
                         view.showSurplus(JDataKit.doubleFormat(money));
                     }
                 }

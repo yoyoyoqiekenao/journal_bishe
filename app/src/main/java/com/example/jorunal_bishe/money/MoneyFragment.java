@@ -81,7 +81,7 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
         mAdapter = new MoneyAdapter(context, new ArrayList<Journal>(0), listener);
         rc_journal.setAdapter(mAdapter);
 
-        presenter.loadJournals();
+        //presenter.loadJournals();
         setCurDate();
         btnRemember.setOnClickListener(this);
         tvIncome.setOnClickListener(this);
@@ -201,5 +201,11 @@ public class MoneyFragment extends FragmentBase implements MoneyContract.View, V
                 presenter.loadJournals();
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.loadJournals();
     }
 }
